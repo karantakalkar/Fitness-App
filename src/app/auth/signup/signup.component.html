@@ -1,3 +1,61 @@
-<p>
-  signup works!
-</p>
+
+<div class="container" fxLayoutAlign="center center">
+
+    <mat-card>
+
+      <form [formGroup]="signupForm" (ngSubmit)="submit()">
+
+      <mat-card-content
+      >
+        <mat-card-header fxLayoutAlign="center">
+          <mat-card-title>Sign Up</mat-card-title>
+        </mat-card-header>
+
+        <div fxLayout="column" fxLayoutGap="5px">
+
+          <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input required matInput formControlName="email">
+            <mat-error *ngIf="signupForm.controls.email.hasError('required')">
+              E-mail is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field hintLabel = "Should be at least 6 charecters long">
+            <mat-label>Password</mat-label>
+            <input required matInput formControlName="password">
+            <mat-error *ngIf="signupForm.controls.password.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Date of Birth</mat-label>
+            <input required matInput [matDatepicker]="dobpicker" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+            <mat-datepicker #dobpicker></mat-datepicker>
+            <mat-error *ngIf="signupForm.controls.dob.hasError('required')">
+              Date of Birth is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <mat-checkbox formControlName="agree">Agree to Terms and Conditions</mat-checkbox>
+          </div>
+
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="5px">
+        <button type="button" mat-raised-button [routerLink]="['']">Cancel</button>
+        <button mat-raised-button color="primary"[disabled]="!signupForm.valid">Submit</button>
+      </mat-card-actions>
+
+      </form>
+
+    </mat-card>
+    
+  </div>
+  
+  

@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { AuthService } from '../auth.service'
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,7 +21,7 @@ export class SignupComponent implements OnInit {
   /**
    * @param FormBuilder formBuilder.
    */
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private authservice: AuthService) { }
 
   /**
    * Creates and sets Sign Up form
@@ -37,9 +39,11 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  // TODO; utilize form value once basic app setup.
   submit() {
-    console.log(this.signupForm.value);
+    this.authservice.registerUser({
+      email: this.signupForm.controls.email.value,
+      password: this.signupForm.controls.password.value
+    })
   }
 
 }

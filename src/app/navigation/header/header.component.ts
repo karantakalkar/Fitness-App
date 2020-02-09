@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/cor
 import { Subscription } from 'rxjs/Subscription'
 
 import { AuthService } from '../../auth/auth.service'
-import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.authSubscription.unsubscribe();
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 
   /**

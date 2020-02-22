@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { StopTrainingComponent } from './stop-traning.component';
+import { StopTrainingComponent } from './stop-training.component';
 import { TrainingService } from '../training.service';
 
 @Component({
   selector: 'app-current-training',
   templateUrl: './current-training.component.html',
-  styleUrls: ['./current-training.component.scss']
+  styleUrls: ['./current-training.component.css']
 })
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;
-  timer: any;
+  timer: number;
 
   constructor(private dialog: MatDialog, private trainingService: TrainingService) {}
 
